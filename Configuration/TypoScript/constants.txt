@@ -1,0 +1,29 @@
+plugin.tx_cookiemanager {
+	view {
+		# cat=plugin.tx_cookiemanager/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:cookie_manager/Resources/Private/Templates/
+		# cat=plugin.tx_cookiemanager/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:cookie_manager/Resources/Private/Partials/
+		# cat=plugin.tx_cookiemanager/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:cookie_manager/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_cookiemanager//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+module.tx_cookiemanager {
+	view {
+		# cat=module.tx_cookiemanager/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:cookie_manager/Resources/Private/Backend/Templates/
+		# cat=module.tx_cookiemanager/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:cookie_manager/Resources/Private/Backend/Partials/
+		# cat=module.tx_cookiemanager/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:cookie_manager/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_cookiemanager//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

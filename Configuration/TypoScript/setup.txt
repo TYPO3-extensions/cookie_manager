@@ -1,0 +1,51 @@
+plugin.tx_cookiemanager {
+	view {
+		templateRootPath = {$plugin.tx_cookiemanager.view.templateRootPath}
+		partialRootPath = {$plugin.tx_cookiemanager.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_cookiemanager.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_cookiemanager.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_cookiemanager._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-cookie-manager table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-cookie-manager table th {
+		font-weight:bold;
+	}
+
+	.tx-cookie-manager table td {
+		vertical-align:top;
+	}
+)
+
+ # Module configuration
+module.tx_cookiemanager {
+	persistence {
+		storagePid = {$module.tx_cookiemanager.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_cookiemanager.view.templateRootPath}
+		partialRootPath = {$module.tx_cookiemanager.view.partialRootPath}
+		layoutRootPath = {$module.tx_cookiemanager.view.layoutRootPath}
+	}
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Cookie Manager extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_cookiemanager_domain_model_cookie">Cookie</label>
+			<label index="tx_cookiemanager_domain_model_cookie.name">Cookie name</label>
+			<label index="tx_cookiemanager_domain_model_cookie.expire">Cookie lifetime</label>
+			<label index="tx_cookiemanager_domain_model_cookie.path">Cookie path</label>
+			<label index="tx_cookiemanager_domain_model_cookie.domain">Cookie domain</label>
+			<label index="tx_cookiemanager_domain_model_cookie.secure">Secured Connection Only Cookie</label>
+			<label index="tx_cookiemanager_domain_model_cookie.group_cookies">GroupCookies</label>
+			<label index="tx_cookiemanager_domain_model_groupcookie">GroupCookie</label>
+			<label index="tx_cookiemanager_domain_model_groupcookie.name">GroupCookie Name</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress">IPAddress</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP Address</label>
+		</languageKey>
+	</data>
+</T3locallang>
