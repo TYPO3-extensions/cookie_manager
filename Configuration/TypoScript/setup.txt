@@ -41,7 +41,7 @@ plugin.tx_cookiemanager._CSS_DEFAULT_STYLE (
  # Module configuration
 module.tx_cookiemanager {
 	persistence {
-		storagePid = {$module.tx_cookiemanager.persistence.storagePid}
+		storagePid = {$plugin.tx_cookiemanager.persistence.storagePid}
 	}
 	view {
 		templateRootPath = {$module.tx_cookiemanager.view.templateRootPath}

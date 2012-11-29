@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="cookiemanager container">
+	<f:if condition="{cookie}">
+		<f:then>
+			<p>Manage your cookies?</p>
+		</f:then>
+		<f:else>
+			<f:link.action action="createCookie" class="btn btn-success" arguments="{allow:'true'}">Allow Cookies</f:link.action>
+			<f:link.action action="createCookie" class="btn btn-warning" >DisAllow Cookies</f:link.action>
+		</f:else>
+	</f:if>
+</div>

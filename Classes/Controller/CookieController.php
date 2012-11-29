@@ -151,10 +151,34 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	/**
 	 * action createCookie
 	 *
+	 * @param bool $allow
 	 * @return void
 	 */
-	public function createCookieAction() {
+	public function createCookieAction($allow = FALSE) {
+		$cookie = $this->cookieRepository->findAll()->getFirst();
+		if ($cookie) {
 
+			if ($allow) {
+				Tx_CookieManager_Utility_CookieUtility::setAllCookies($cookie, TRUE);
+				// Set result message
+				$result = array(
+					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
+					'msg' => 'Allowed'
+				);
+			} else {
+				Tx_CookieManager_Utility_CookieUtility::setMainCookie($cookie);
+				// Set result message
+				$result = array(
+					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
+					'msg' => 'DisAllowed'
+				);
+			}
+
+			return json_encode($result);
+
+		} else {
+			$this->flashMessageContainer->add('No cookie configuration found!', 'Configuration Error', t3lib_FlashMessage::ERROR);
+		}
 	}
 
 	/**
@@ -181,7 +205,8 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * @return void
 	 */
 	public function acceptCookieAction() {
-
+		$cookie = unserialize($_COOKIE[$this->cookieRepository->findAll()->getFirst()->getName()]);
+		$this->view->assign('cookie', $cookie);
 	}
 
 	/**

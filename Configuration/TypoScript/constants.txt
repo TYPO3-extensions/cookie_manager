@@ -22,8 +22,4 @@ module.tx_cookiemanager {
 		# cat=module.tx_cookiemanager/file; type=string; label=Path to template layouts (BE)
 		layoutRootPath = EXT:cookie_manager/Resources/Private/Backend/Layouts/
 	}
-	persistence {
-		# cat=module.tx_cookiemanager//a; type=string; label=Default storage PID
-		storagePid =
-	}
 }
