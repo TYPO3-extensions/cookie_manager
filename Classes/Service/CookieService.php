@@ -1,6 +1,6 @@
 <?php
 
-class Tx_CookieManager_Utility_CookieUtility implements t3lib_Singleton {
+class Tx_CookieManager_Service_CookieService implements t3lib_Singleton {
 
 	/**
 	 * Set main and groupcookies in one call

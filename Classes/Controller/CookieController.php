@@ -159,14 +159,14 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 		if ($cookie) {
 
 			if ($allow) {
-				Tx_CookieManager_Utility_CookieUtility::setAllCookies($cookie, TRUE);
+				Tx_CookieManager_Service_CookieService::setAllCookies($cookie, TRUE);
 				// Set result message
 				$result = array(
 					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
 					'msg' => 'Allowed'
 				);
 			} else {
-				Tx_CookieManager_Utility_CookieUtility::setMainCookie($cookie);
+				Tx_CookieManager_Service_CookieService::setMainCookie($cookie);
 				// Set result message
 				$result = array(
 					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
@@ -199,18 +199,18 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 		$cookie = $this->cookieRepository->findAll()->getFirst();
 		$arguments = $this->request->getArguments();
 		if($arguments['mainCookie']) {
-			Tx_CookieManager_Utility_CookieUtility::setMainCookie($cookie, TRUE);
+			Tx_CookieManager_Service_CookieService::setMainCookie($cookie, TRUE);
 			if($arguments['groupCookie']) {
 				foreach ($arguments['groupCookie'] as $key => $value) {
 					if ($value) {
-						Tx_CookieManager_Utility_CookieUtility::setGroupCookieByName($cookie, TRUE, $key);
+						Tx_CookieManager_Service_CookieService::setGroupCookieByName($cookie, TRUE, $key);
 					} else {
-						Tx_CookieManager_Utility_CookieUtility::setGroupCookieByName($cookie, FALSE, $key);
+						Tx_CookieManager_Service_CookieService::setGroupCookieByName($cookie, FALSE, $key);
 					}
 				}
 			}
 		} else {
-			Tx_CookieManager_Utility_CookieUtility::setAllCookies($cookie, FALSE);
+			Tx_CookieManager_Service_CookieService::setAllCookies($cookie, FALSE);
 		}
 		$this->flashMessageContainer->add('Updated your cookie settings', '', t3lib_FlashMessage::OK);
 		$this->redirect('editCookie');
