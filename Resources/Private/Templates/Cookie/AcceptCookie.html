@@ -1,11 +1,18 @@
 <div class="cookiemanager container">
-	<f:if condition="{cookie}">
-		<f:then>
-			<p>Manage your cookies?</p>
-		</f:then>
-		<f:else>
-			<f:link.action action="createCookie" class="btn btn-success" arguments="{allow:'true'}">Allow Cookies</f:link.action>
-			<f:link.action action="createCookie" class="btn btn-warning" >DisAllow Cookies</f:link.action>
-		</f:else>
-	</f:if>
+	<div class="row">
+		<f:if condition="{cookie}">
+			<f:then>
+				<a href="#"><i class="icon icon-wrench"></i> Manage your cookies?</a>
+			</f:then>
+			<f:else>
+				<div class="span8">
+					<p><i class="icon icon-info-sign"></i> Read more about our Cookie Policy</p>
+				</div>
+				<div class="pull-right">
+					<f:link.action action="createCookie" class="btn btn-small btn-warning" >DisAllow Cookies</f:link.action>
+					<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'true'}">Allow Cookies</f:link.action>
+				</div>
+			</f:else>
+		</f:if>
+	</div>
 </div>

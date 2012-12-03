@@ -85,5 +85,6 @@ class Tx_CookieManager_Utility_CookieUtility implements t3lib_Singleton {
 		}
 		return TRUE;
 	}
+
 }
 ?>

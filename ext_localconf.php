@@ -7,7 +7,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Cookie',
 	array(
-		'Cookie' => 'acceptCookie, editCookie, createCookie, updateCookie, deleteCookie',
+		'Cookie' => 'editCookie, acceptCookie, createCookie, updateCookie, deleteCookie',
 		
 	),
 	// non-cacheable actions
@@ -17,4 +17,17 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	)
 );
 
+Tx_Extbase_Utility_Extension::configurePlugin(
+	$_EXTKEY,
+	'CookieAccept',
+	array(
+		'Cookie' => 'acceptCookie, createCookie',
+
+	),
+	// non-cacheable actions
+	array(
+		'Cookie' => 'acceptCookie, editCookie',
+
+	)
+);
 ?>

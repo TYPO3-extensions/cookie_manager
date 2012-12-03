@@ -8,10 +8,15 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'Cookie',
 	'Cookie Control'
 );
+Tx_Extbase_Utility_Extension::registerPlugin(
+	$_EXTKEY,
+	'CookieAccept',
+	'Cookie Acceptance Pane'
+);
 
-$pluginSignature = str_replace('_','',$_EXTKEY) . '_cookie';
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_cookie.xml');
+//$pluginSignature = str_replace('_','',$_EXTKEY) . '_cookie';
+//$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+//t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_cookie.xml');
 
 if (TYPO3_MODE === 'BE') {
 

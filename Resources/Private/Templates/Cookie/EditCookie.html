@@ -1,0 +1,13 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1>Edit Cookie</h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+<f:form action="updateCookie" name="cookie" object="{cookie}" >
+	<f:render partial="Cookie/FormFields" arguments="{cookies:cookies}" />
+	<f:form.submit class="btn" value="Save" />
+</f:form>
+</f:section>
