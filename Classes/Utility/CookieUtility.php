@@ -23,15 +23,19 @@ class Tx_CookieManager_Utility_CookieUtility implements t3lib_Singleton {
 	 * @return boolean
 	 */
 	public function setMainCookie(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
-		return setcookie (
-			$cookie->getName(),
-			serialize($value),
-			$expire = 0,
-			$cookie->getPath(),
-			$cookie->getDomain(),
-			$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-			$httponly = false
-		);
+		$expire = strtotime($cookie->getExpire());
+		if ($expire) {
+			return setcookie(
+				$cookie->getName(),
+				serialize($value),
+				$expire,
+				$cookie->getPath(),
+				$cookie->getDomain(),
+				$cookie->getSecure() ? $cookie->getSecure() : FALSE,
+				$httponly = false
+			);
+		}
+		return FALSE;
 	}
 
 	/**
@@ -43,21 +47,25 @@ class Tx_CookieManager_Utility_CookieUtility implements t3lib_Singleton {
 	 * @return boolean
 	 */
 	public function setAllGroupCookies(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
-		foreach ($cookie->getGroupCookies() as $groupCookie) {
-			setcookie (
-				$cookie->getName() . '_' . $groupCookie->getName(),
-				serialize($value),
-				$expire = 0,
-				$cookie->getPath(),
-				$cookie->getDomain(),
-				$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-				$httponly = false
-			);
-		}
-		// If a groupCookie is set, we need the main cookie as well
-		self::setMainCookie($cookie, $value);
+		$expire = strtotime($cookie->getExpire());
+		if ($expire) {
+			foreach ($cookie->getGroupCookies() as $groupCookie) {
+				setcookie(
+					$cookie->getName() . '_' . $groupCookie->getName(),
+					serialize($value),
+					$expire,
+					$cookie->getPath(),
+					$cookie->getDomain(),
+					$cookie->getSecure() ? $cookie->getSecure() : FALSE,
+					$httponly = false
+				);
+			}
 
-		return TRUE;
+			// If a groupCookie is set, we need the main cookie as well
+			self::setMainCookie($cookie, $value);
+
+			return TRUE;
+		}
 	}
 
 	/**
@@ -70,21 +78,25 @@ class Tx_CookieManager_Utility_CookieUtility implements t3lib_Singleton {
 	 * @return boolean
 	 */
 	public function setGroupCookieByName(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE, $name = '') {
-		foreach ($cookie->getGroupCookies() as $groupCookie) {
-			if($groupCookie->getName() === $name) {
-				setcookie (
-					$cookie->getName() . '_' . $groupCookie->getName(),
-					serialize($value),
-					$expire = 0,
-					$cookie->getPath(),
-					$cookie->getDomain(),
-					$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-					$httponly = false
-				);
+		$expire = strtotime($cookie->getExpire());
+		if ($expire) {
+			foreach ($cookie->getGroupCookies() as $groupCookie) {
+				if ($groupCookie->getName() === $name) {
+					setcookie(
+						$cookie->getName() . '_' . $groupCookie->getName(),
+						serialize($value),
+						$expire,
+						$cookie->getPath(),
+						$cookie->getDomain(),
+						$cookie->getSecure() ? $cookie->getSecure() : FALSE,
+						$httponly = false
+					);
+				}
 			}
+			return TRUE;
 		}
-		return TRUE;
 	}
 
 }
+
 ?>
