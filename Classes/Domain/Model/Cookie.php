@@ -81,9 +81,7 @@ class Tx_CookieManager_Domain_Model_Cookie extends Tx_Extbase_DomainObject_Abstr
 	protected $groupCookies;
 
 	/**
-	 * __construct
 	 *
-	 * @return
 	 */
 	public function __construct() {
 		//Do not remove the next line: It would break the functionality
@@ -211,21 +209,21 @@ class Tx_CookieManager_Domain_Model_Cookie extends Tx_Extbase_DomainObject_Abstr
 	/**
 	 * Adds a GroupCookie
 	 *
-	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCooky
+	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCookie
 	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
 	 */
-	public function addGroupCooky(Tx_CookieManager_Domain_Model_GroupCookie $groupCooky) {
-		$this->groupCookies->attach($groupCooky);
+	public function addGroupCookie(Tx_CookieManager_Domain_Model_GroupCookie $groupCookie) {
+		$this->groupCookies->attach($groupCookie);
 	}
 
 	/**
 	 * Removes a GroupCookie
 	 *
-	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCookyToRemove The GroupCookie to be removed
+	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCookieToRemove The GroupCookie to be removed
 	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
 	 */
-	public function removeGroupCooky(Tx_CookieManager_Domain_Model_GroupCookie $groupCookyToRemove) {
-		$this->groupCookies->detach($groupCookyToRemove);
+	public function removeGroupCookie(Tx_CookieManager_Domain_Model_GroupCookie $groupCookieToRemove) {
+		$this->groupCookies->detach($groupCookieToRemove);
 	}
 
 	/**

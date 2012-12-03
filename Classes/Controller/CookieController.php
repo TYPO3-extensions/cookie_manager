@@ -128,7 +128,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 		$groupCookies = $cookie->getGroupCookies();
 		foreach ($groupCookies as $groupCookie) {
 			if ($groupCookie->getName() === '') {
-				$cookie->removeGroupCooky($groupCookie);
+				$cookie->removeGroupCookie($groupCookie);
 			}
 		}
 		$this->cookieRepository->update($cookie);

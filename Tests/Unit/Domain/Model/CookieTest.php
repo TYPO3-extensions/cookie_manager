@@ -155,9 +155,9 @@ class Tx_CookieManager_Domain_Model_CookieTest extends Tx_Extbase_Tests_Unit_Bas
 	 * @test
 	 */
 	public function setGroupCookiesForObjectStorageContainingTx_CookieManager_Domain_Model_GroupCookieSetsGroupCookies() { 
-		$groupCooky = new Tx_CookieManager_Domain_Model_GroupCookie();
+		$groupCookie = new Tx_CookieManager_Domain_Model_GroupCookie();
 		$objectStorageHoldingExactlyOneGroupCookies = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneGroupCookies->attach($groupCooky);
+		$objectStorageHoldingExactlyOneGroupCookies->attach($groupCookie);
 		$this->fixture->setGroupCookies($objectStorageHoldingExactlyOneGroupCookies);
 
 		$this->assertSame(
@@ -169,14 +169,14 @@ class Tx_CookieManager_Domain_Model_CookieTest extends Tx_Extbase_Tests_Unit_Bas
 	/**
 	 * @test
 	 */
-	public function addGroupCookyToObjectStorageHoldingGroupCookies() {
-		$groupCooky = new Tx_CookieManager_Domain_Model_GroupCookie();
-		$objectStorageHoldingExactlyOneGroupCooky = new Tx_Extbase_Persistence_ObjectStorage();
-		$objectStorageHoldingExactlyOneGroupCooky->attach($groupCooky);
-		$this->fixture->addGroupCooky($groupCooky);
+	public function addGroupCookieToObjectStorageHoldingGroupCookies() {
+		$groupCookie = new Tx_CookieManager_Domain_Model_GroupCookie();
+		$objectStorageHoldingExactlyOneGroupCookie = new Tx_Extbase_Persistence_ObjectStorage();
+		$objectStorageHoldingExactlyOneGroupCookie->attach($groupCookie);
+		$this->fixture->addGroupCookie($groupCookie);
 
 		$this->assertEquals(
-			$objectStorageHoldingExactlyOneGroupCooky,
+			$objectStorageHoldingExactlyOneGroupCookie,
 			$this->fixture->getGroupCookies()
 		);
 	}
@@ -184,13 +184,13 @@ class Tx_CookieManager_Domain_Model_CookieTest extends Tx_Extbase_Tests_Unit_Bas
 	/**
 	 * @test
 	 */
-	public function removeGroupCookyFromObjectStorageHoldingGroupCookies() {
-		$groupCooky = new Tx_CookieManager_Domain_Model_GroupCookie();
+	public function removeGroupCookieFromObjectStorageHoldingGroupCookies() {
+		$groupCookie = new Tx_CookieManager_Domain_Model_GroupCookie();
 		$localObjectStorage = new Tx_Extbase_Persistence_ObjectStorage();
-		$localObjectStorage->attach($groupCooky);
-		$localObjectStorage->detach($groupCooky);
-		$this->fixture->addGroupCooky($groupCooky);
-		$this->fixture->removeGroupCooky($groupCooky);
+		$localObjectStorage->attach($groupCookie);
+		$localObjectStorage->detach($groupCookie);
+		$this->fixture->addGroupCookie($groupCookie);
+		$this->fixture->removeGroupCookie($groupCookie);
 
 		$this->assertEquals(
 			$localObjectStorage,
