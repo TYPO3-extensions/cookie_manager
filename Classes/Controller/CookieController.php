@@ -51,6 +51,23 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	}
 
 	/**
+	 * IPAddressRepository
+	 *
+	 * @var Tx_CookieManager_Domain_Repository_IPAddressRepository
+	 */
+	protected $IPAddressRepository;
+
+	/**
+	 * injectIPAddressRepository
+	 *
+	 * @param Tx_CookieManager_Domain_Repository_IPAddressRepository $IPAddressRepository
+	 * @return void
+	 */
+	public function injectIPAddressRepository(Tx_CookieManager_Domain_Repository_IPAddressRepository $IPAddressRepository) {
+		$this->IPAddressRepository = $IPAddressRepository;
+	}
+
+	/**
 	 * dispatchAction
 	 *
 	 * @param null|Tx_CookieManager_Domain_Model_Cookie $cookie
@@ -160,6 +177,8 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 
 			if ($allow) {
 				Tx_CookieManager_Service_CookieService::setAllCookies($cookie, TRUE);
+				// Log the IP address
+				$this->logIPAddress();
 				// Set result message
 				$result = array(
 					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
@@ -182,15 +201,6 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	}
 
 	/**
-	 * action deleteCookie
-	 *
-	 * @return void
-	 */
-	public function deleteCookieAction() {
-
-	}
-
-	/**
 	 * action updateCookie
 	 *
 	 * @return void
@@ -209,6 +219,9 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 					}
 				}
 			}
+
+			// Log the IP address
+			$this->logIPAddress();
 		} else {
 			Tx_CookieManager_Service_CookieService::setAllCookies($cookie, FALSE);
 		}
@@ -253,6 +266,15 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 			);
 		}
 		$this->view->assign('cookies', $cookies);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function logIPAddress() {
+		$IPAddress = $this->objectManager->create(Tx_CookieManager_Domain_Model_IPAddress);
+		$IPAddress->setIp(Tx_CookieManager_Utility_IPUtility::getIPAddress());
+		$this->IPAddressRepository->add($IPAddress);
 	}
 
 }

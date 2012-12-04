@@ -7,12 +7,12 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Cookie',
 	array(
-		'Cookie' => 'editCookie, acceptCookie, createCookie, updateCookie, deleteCookie',
+		'Cookie' => 'editCookie, acceptCookie, createCookie, updateCookie',
 		
 	),
 	// non-cacheable actions
 	array(
-		'Cookie' => 'acceptCookie, editCookie, createCookie, updateCookie, deleteCookie',
+		'Cookie' => 'acceptCookie, editCookie, createCookie, updateCookie',
 		
 	)
 );

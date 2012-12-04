@@ -20,6 +20,7 @@ class Tx_CookieManager_Utility_IPUtility implements  t3lib_Singleton {
 
 		return $IPAddress;
 	}
+
 }
 
 ?>
