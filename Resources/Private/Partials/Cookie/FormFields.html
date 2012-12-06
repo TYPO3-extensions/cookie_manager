@@ -1,8 +1,9 @@
 <div class="controls">
 	<label class="checkbox">
 		<f:form.checkbox name="mainCookie" value="1" checked="{f:if(condition:'{cookies.mainCookie.value}', then:'checked')}" />
-		Main Cookie
+		{f:translate(key:'fe.mainCookie.name')}
 	</label>
+	{f:translate(key:'fe.mainCookie.description') -> f:format.html()}
 </div>
 <f:for each="{cookies.groupCookies}" as="groupCookie">
 	<div class="controls">

@@ -27,6 +27,10 @@
 			<label index="fe.link.cookiepolicy">Read more about our Cookie Policy</label>
 			<label index="fe.link.allow">Yes, I accept cookies</label>
 			<label index="fe.link.disallow">I don't want cookies</label>
+			<label index="fe.form.save">Save</label>
+			<label index="fe.mainCookie.name">Main Cookie</label>
+			<label index="fe.mainCookie.description"><![CDATA[This is the main cookie. Without this cookie, groupcookies will always be off.
+			On unchecking this, all other cookies will be set to false.]]></label>
 		</languageKey>
 	</data>
 </T3locallang>
