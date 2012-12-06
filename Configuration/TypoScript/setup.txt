@@ -3,6 +3,7 @@ plugin.tx_cookiemanager {
 		templateRootPath = {$plugin.tx_cookiemanager.view.templateRootPath}
 		partialRootPath = {$plugin.tx_cookiemanager.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_cookiemanager.view.layoutRootPath}
+		defaultPid = auto
 	}
 	persistence {
 		storagePid = {$plugin.tx_cookiemanager.persistence.storagePid}
@@ -10,6 +11,9 @@ plugin.tx_cookiemanager {
 	features {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		logIpAddresses = {$plugin.tx_cookiemanager.settings.logIpAddresses}
 	}
 }
 

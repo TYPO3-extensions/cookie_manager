@@ -23,6 +23,9 @@
 			<label index="bemod.updated">Your cookie configuration has been updated</label>
 			<label index="bemod.deleted">Your cookie configuration has been deleted</label>
 			<label index="fe.updated">Your cookie settings have been updated</label>
+			<label index="fe.link.cookiepolicy">Read more about our Cookie Policy</label>
+			<label index="fe.link.allow">Yes, I accept cookies</label>
+			<label index="fe.link.disallow">I don't want cookies</label>
 		</languageKey>
 	</data>
 </T3locallang>

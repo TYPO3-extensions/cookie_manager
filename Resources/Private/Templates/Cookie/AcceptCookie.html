@@ -1,16 +1,13 @@
 <div class="cookiemanager container">
 	<div class="row">
 		<f:if condition="{cookie}">
-			<f:then>
-				<a href="#"><i class="icon icon-wrench"></i> Manage your cookies?</a>
-			</f:then>
 			<f:else>
 				<div class="span8">
-					<p><i class="icon icon-info-sign"></i> Read more about our Cookie Policy</p>
+					<f:link.action action="editCookie"><i class="icon icon-info-sign"></i> {f:translate(key:'fe.link.cookiepolicy')}</f:link.action>
 				</div>
 				<div class="pull-right createCookieAction">
-					<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="1354824258">DisAllow Cookies</f:link.action>
-					<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'true'}" pageType="1354824258">Allow Cookies</f:link.action>
+					<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="1354824258">{f:translate(key:'fe.link.disallow')}</f:link.action>
+					<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'true'}" pageType="1354824258">{f:translate(key:'fe.link.allow')}</f:link.action>
 				</div>
 			</f:else>
 		</f:if>

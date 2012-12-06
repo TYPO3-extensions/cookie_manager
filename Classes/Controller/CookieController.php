@@ -272,9 +272,11 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * @return void
 	 */
 	public function logIPAddress() {
-		$IPAddress = $this->objectManager->create(Tx_CookieManager_Domain_Model_IPAddress);
-		$IPAddress->setIp(Tx_CookieManager_Utility_IPUtility::getIPAddress());
-		$this->IPAddressRepository->add($IPAddress);
+		if ($this->settings['logIpAddresses']) {
+			$IPAddress = $this->objectManager->create(Tx_CookieManager_Domain_Model_IPAddress);
+			$IPAddress->setIp(Tx_CookieManager_Utility_IPUtility::getIPAddress());
+			$this->IPAddressRepository->add($IPAddress);
+		}
 	}
 
 }

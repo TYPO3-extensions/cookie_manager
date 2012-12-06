@@ -11,6 +11,10 @@ plugin.tx_cookiemanager {
 		# cat=plugin.tx_cookiemanager//a; type=string; label=Default storage PID
 		storagePid =
 	}
+	settings {
+		# cat=plugin.tx_cookiemanager//a; type=boolean; Label=Enable IP logging:If true IP's are logged from users who accept cookies.
+		logIpAddresses = 0
+	}
 }
 
 module.tx_cookiemanager {
