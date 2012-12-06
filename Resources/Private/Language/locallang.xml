@@ -15,6 +15,7 @@
 			<label index="tx_cookiemanager_domain_model_cookie.group_cookies">GroupCookies</label>
 			<label index="tx_cookiemanager_domain_model_groupcookie">GroupCookie</label>
 			<label index="tx_cookiemanager_domain_model_groupcookie.name">GroupCookie Name</label>
+			<label index="tx_cookiemanager_domain_model_groupcookie.description">GroupCookie Description</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress">IPAddress</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP Address</label>
 			<label index="ajax.allowed">Thank you for allowing cookies! You are experiencing our website in full glory!</label>

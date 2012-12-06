@@ -17,9 +17,10 @@
 
 			<label index="tx_cookiemanager_domain_model_groupcookie">Group Cookie</label>
 			<label index="tx_cookiemanager_domain_model_groupcookie.name">Name</label>
+			<label index="tx_cookiemanager_domain_model_groupcookie.description">GroupCookie Description</label>
 
-			<label index="tx_cookiemanager_domain_model_ipaddress">I P Address</label>
-			<label index="tx_cookiemanager_domain_model_ipaddress.ip">Ip</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress">IP Address</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP</label>
 
 		</languageKey>
 	</data>

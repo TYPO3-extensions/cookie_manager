@@ -18,29 +18,30 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 //$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 //t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_cookie.xml');
 
-if (TYPO3_MODE === 'BE') {
-
-	/**
-	 * Registers a Backend Module
-	 */
-	Tx_Extbase_Utility_Extension::registerModule(
-		$_EXTKEY,
-		'web',	 // Make module a submodule of 'web'
-		'manager',	// Submodule key
-		'',						// Position
-		array(
-			'Cookie' => 'dispatch, new, create, show, edit, update, delete',
-			'IPAddress' => 'list, show, new, create, delete',
-			
-		),
-		array(
-			'access' => 'user,group',
-			'icon'   => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
-			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_manager.xml',
-		)
-	);
-
-}
+// Todo: Finish - Disable for now
+//if (TYPO3_MODE === 'BE') {
+//
+//	/**
+//	 * Registers a Backend Module
+//	 */
+//	Tx_Extbase_Utility_Extension::registerModule(
+//		$_EXTKEY,
+//		'web',	 // Make module a submodule of 'web'
+//		'manager',	// Submodule key
+//		'',						// Position
+//		array(
+//			'Cookie' => 'dispatch, new, create, show, edit, update, delete',
+//			'IPAddress' => 'list, show, new, create, delete',
+//
+//		),
+//		array(
+//			'access' => 'user,group',
+//			'icon'   => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+//			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_manager.xml',
+//		)
+//	);
+//
+//}
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Cookie Manager');
 
@@ -97,6 +98,7 @@ $TCA['tx_cookiemanager_domain_model_groupcookie'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'name,',
+		'hideTable' => TRUE,
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/GroupCookie.php',
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_cookiemanager_domain_model_groupcookie.gif'
 	),
@@ -126,6 +128,7 @@ $TCA['tx_cookiemanager_domain_model_ipaddress'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'ip,',
+		'readOnly' => TRUE,
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/IPAddress.php',
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_cookiemanager_domain_model_ipaddress.gif'
 	),

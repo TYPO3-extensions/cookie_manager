@@ -42,6 +42,12 @@ class Tx_CookieManager_Domain_Model_GroupCookie extends Tx_Extbase_DomainObject_
 	protected $name;
 
 	/**
+	 * GroupCookie Description
+	 * @var string
+	 */
+	protected $description;
+
+	/**
 	 * Returns the name
 	 *
 	 * @return string $name
@@ -58,6 +64,21 @@ class Tx_CookieManager_Domain_Model_GroupCookie extends Tx_Extbase_DomainObject_
 	 */
 	public function setName($name) {
 		$this->name = $name;
+	}
+
+	/**
+	 * @param string $description
+	 * @return void
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescription() {
+		return $this->description;
 	}
 
 }

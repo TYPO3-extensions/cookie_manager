@@ -6,9 +6,9 @@
 		<csh_table>tx_cookiemanager_domain_model_groupcookie</csh_table>
 	</meta>
 	<data type="array">
-	<languageKey index="default" type="array">
-	   
+		<languageKey index="default" type="array">
 			<label index="name.description">GroupCookie Name</label>
+			<label index="description.description">GroupCookie Description</label>
 		</languageKey>
 	</data>
 </T3locallang>

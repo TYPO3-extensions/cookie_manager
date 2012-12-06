@@ -24,9 +24,11 @@
 	<f:for each="{cookie.groupCookies}" as="groupCookie">
 		<div>
 			<f:form.hidden property="groupCookies.{groupCookie.uid}.name" value="{groupCookie.name}" />
-			<a href="#" class="deleteGroupCookie" title="delete"><span class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-delete">&nbsp;</span></a> {groupCookie.name}
+			<a href="#" class="deleteGroupCookie" title="delete"><span class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-delete">&nbsp;</span></a> {groupCookie.name}<br/>
+			{groupCookie.description -> f:format.raw()}
 		</div>
 	</f:for>
 </f:if>
 <label>Add a group cookie</label>
-<f:form.textfield property="groupCookies.newGroupCookie.name" /><br/><br/>
+<f:form.textfield property="groupCookies.newGroupCookie.name" /><br/>
+<f:form.textarea property="groupCookies.newGroupCookie.description" rows="5" cols="10"/><br/><br/>
