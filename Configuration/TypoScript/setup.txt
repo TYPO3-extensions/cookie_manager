@@ -13,31 +13,6 @@ plugin.tx_cookiemanager {
 	}
 }
 
-plugin.tx_cookiemanager._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-cookie-manager table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-cookie-manager table th {
-		font-weight:bold;
-	}
-
-	.tx-cookie-manager table td {
-		vertical-align:top;
-	}
-)
-
  # Module configuration
 module.tx_cookiemanager {
 	persistence {
@@ -49,3 +24,31 @@ module.tx_cookiemanager {
 		layoutRootPath = {$module.tx_cookiemanager.view.layoutRootPath}
 	}
 }
+
+cookie = PAGE
+cookie {
+	typeNum = 1354824258
+	10 = USER_INT
+	10 {
+		userFunc = tx_extbase_core_bootstrap->run
+		pluginName = CookieAccept
+		extensionName = CookieManager
+		switchableControllerActions {
+		    Cookie {
+				1 = createCookie
+		    }
+		}
+		settings =< plugin.tx_cookiemanager.settings
+		persistence =< plugin.tx_cookiemanager.persistence
+		view =< plugin.tx_cookiemanager.view
+	}
+	config {
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:application/json
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+	}
+}
+
+page.includeJSFooterlibs.cookie = EXT:cookie_manager/Resources/Public/Javascripts/createcookie.js

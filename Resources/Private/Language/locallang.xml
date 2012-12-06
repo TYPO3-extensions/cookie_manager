@@ -17,6 +17,12 @@
 			<label index="tx_cookiemanager_domain_model_groupcookie.name">GroupCookie Name</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress">IPAddress</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP Address</label>
+			<label index="ajax.allowed">Thank you for allowing cookies! You are experiencing our website in full glory!</label>
+			<label index="ajax.disallowed">Thank you, we will respect your choice!</label>
+			<label index="bemod.created">Your cookie configuration has been created</label>
+			<label index="bemod.updated">Your cookie configuration has been updated</label>
+			<label index="bemod.deleted">Your cookie configuration has been deleted</label>
+			<label index="fe.updated">Your cookie settings have been updated</label>
 		</languageKey>
 	</data>
 </T3locallang>

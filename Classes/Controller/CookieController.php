@@ -120,7 +120,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 */
 	public function createAction(Tx_CookieManager_Domain_Model_Cookie $newCookie) {
 		$this->cookieRepository->add($newCookie);
-		$this->flashMessageContainer->add('Your new Cookie was created.');
+		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('bemod.created', $this->extensionName));
 		$this->redirect('dispatch');
 	}
 
@@ -149,7 +149,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 			}
 		}
 		$this->cookieRepository->update($cookie);
-		$this->flashMessageContainer->add('Your Cookie was updated.');
+		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('bemod.updated', $this->extensionName));
 		$this->redirect('edit', NULL, NULL, array('cookie' => $cookie));
 	}
 
@@ -161,7 +161,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 */
 	public function deleteAction(Tx_CookieManager_Domain_Model_Cookie $cookie) {
 		$this->cookieRepository->remove($cookie);
-		$this->flashMessageContainer->add('Your Cookie was removed.');
+		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('bemod.deleted', $this->extensionName));
 		$this->redirect('new');
 	}
 
@@ -169,7 +169,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * action createCookie
 	 *
 	 * @param bool $allow
-	 * @return void
+	 * @return string
 	 */
 	public function createCookieAction($allow = FALSE) {
 		$cookie = $this->cookieRepository->findAll()->getFirst();
@@ -182,14 +182,14 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 				// Set result message
 				$result = array(
 					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
-					'msg' => 'Allowed'
+					'msg' => Tx_Extbase_Utility_Localization::translate('ajax.allowed', $this->extensionName)
 				);
 			} else {
 				Tx_CookieManager_Service_CookieService::setMainCookie($cookie);
 				// Set result message
 				$result = array(
 					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
-					'msg' => 'DisAllowed'
+					'msg' => Tx_Extbase_Utility_Localization::translate('ajax.disallowed', $this->extensionName)
 				);
 			}
 
@@ -225,7 +225,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 		} else {
 			Tx_CookieManager_Service_CookieService::setAllCookies($cookie, FALSE);
 		}
-		$this->flashMessageContainer->add('Updated your cookie settings', '', t3lib_FlashMessage::OK);
+		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('fe.updated', $this->extensionName), '', t3lib_FlashMessage::OK);
 		$this->redirect('editCookie');
 	}
 
