@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Henjo Hoeksma <hphoeksma@stylence.nl>, Stylence
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -68,24 +68,13 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	}
 
 	/**
-	 * dispatchAction
+	 * List action
 	 *
-	 * @param null|Tx_CookieManager_Domain_Model_Cookie $cookie
 	 * @return void
 	 */
-	public function dispatchAction(Tx_CookieManager_Domain_Model_Cookie $cookie = NULL) {
-		$arguments = $this->request->getArguments();
-		if ($cookie !== NULL) {
-			$action = $arguments['action'] ? $arguments['action'] : 'show';
-			$this->redirect($action, NULL, NULL, array('cookie' => $cookie));
-		} else {
-			$cookie = $this->cookieRepository->findAll()->getFirst();
-			if ($cookie) {
-				$this->forward('show', NULL, NULL, array('cookie' => $cookie));
-			} else {
-				$this->redirect('new');
-			}
-		}
+	public function listAction() {
+		$cookies = $this->cookieRepository->findAll();
+		$this->view->assign('cookies', $cookies);
 	}
 
 	/**
@@ -121,7 +110,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	public function createAction(Tx_CookieManager_Domain_Model_Cookie $newCookie) {
 		$this->cookieRepository->add($newCookie);
 		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('bemod.created', $this->extensionName));
-		$this->redirect('dispatch');
+		$this->redirect('list');
 	}
 
 	/**
@@ -142,12 +131,6 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * @return void
 	 */
 	public function updateAction(Tx_CookieManager_Domain_Model_Cookie $cookie) {
-		$groupCookies = $cookie->getGroupCookies();
-		foreach ($groupCookies as $groupCookie) {
-			if ($groupCookie->getName() === '') {
-				$cookie->removeGroupCookie($groupCookie);
-			}
-		}
 		$this->cookieRepository->update($cookie);
 		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('bemod.updated', $this->extensionName));
 		$this->redirect('edit', NULL, NULL, array('cookie' => $cookie));
@@ -172,78 +155,67 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * @return string
 	 */
 	public function createCookieAction($allow = FALSE) {
-		$cookie = $this->cookieRepository->findAll()->getFirst();
-		if ($cookie) {
+		$cookies = $this->cookieRepository->findAll();
+		// Make sure it is recognized as boolean
+		$allow = ($allow === '1');
+		// Set the correct response message
+		if ($allow) {
+			$msg = 'fe.allowed.1';
+		} else {
+			$msg = 'fe.allowed.0';
+		}
 
-			if ($allow) {
-				Tx_CookieManager_Service_CookieService::setAllCookies($cookie, TRUE);
-				// Log the IP address
-				$this->logIPAddress();
-				// Set result message
-				$result = array(
-					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
-					'msg' => Tx_Extbase_Utility_Localization::translate('ajax.allowed', $this->extensionName)
-				);
-			} else {
-				Tx_CookieManager_Service_CookieService::setMainCookie($cookie);
-				// Set result message
-				$result = array(
-					'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
-					'msg' => Tx_Extbase_Utility_Localization::translate('ajax.disallowed', $this->extensionName)
-				);
-			}
-
+		if ($cookies->count() > 0) {
+			Tx_CookieManager_Service_CookieService::setAllCookies($cookies, $allow);
+			// Log the IP address
+			$this->logIPAddress();
+			// Set result message
+			$result = array(
+				'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
+				'msg' => Tx_Extbase_Utility_Localization::translate($msg, $this->extensionName)
+			);
 			return json_encode($result);
-
 		} else {
 			$this->flashMessageContainer->add('No cookie configuration found!', 'Configuration Error', t3lib_FlashMessage::ERROR);
 		}
 	}
 
 	/**
-	 * action updateCookie
-	 *
 	 * @return void
 	 */
 	public function updateCookieAction() {
-		$cookie = $this->cookieRepository->findAll()->getFirst();
-		$arguments = $this->request->getArguments();
-		if($arguments['mainCookie']) {
-			Tx_CookieManager_Service_CookieService::setMainCookie($cookie, TRUE);
-			if($arguments['groupCookie']) {
-				foreach ($arguments['groupCookie'] as $key => $value) {
-					if ($value) {
-						Tx_CookieManager_Service_CookieService::setGroupCookieByName($cookie, TRUE, $key);
-					} else {
-						Tx_CookieManager_Service_CookieService::setGroupCookieByName($cookie, FALSE, $key);
-					}
-				}
-			}
 
-			// Log the IP address
-			$this->logIPAddress();
-		} else {
-			Tx_CookieManager_Service_CookieService::setAllCookies($cookie, FALSE);
+		$arguments = $this->request->getArguments();
+		foreach ($arguments['cookies'] as $key => $value) {
+			$cookie = $this->cookieRepository->findByUid($key);
+			Tx_CookieManager_Service_CookieService::setCookie($cookie, $value);
+			if ($value) {
+				// Log the IP address
+				$this->logIPAddress();
+			}
 		}
+
 		$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('fe.updated', $this->extensionName), '', t3lib_FlashMessage::OK);
 		$this->redirect('editCookie');
 	}
 
 	/**
-	 * action acceptCookie
+	 * action acceptCookie checks whether the clients has a cookie based matching ours
 	 *
+	 * @param boolean $clientHasCookies
 	 * @return void
 	 */
-	public function acceptCookieAction() {
-		$clientCookie = $_COOKIE[$this->cookieRepository->findAll()->getFirst()->getName()];
-		if ($clientCookie) {
-			$cookie = unserialize($_COOKIE[$this->cookieRepository->findAll()->getFirst()->getName()]);
-			if ($cookie === FALSE) {
-				$cookie = TRUE;
+	public function acceptCookieAction($clientHasCookies = FALSE) {
+		$cookies = $this->cookieRepository->findAll();
+		foreach ($cookies as $cookie) {
+			$clientHasCookie = $_COOKIE[$cookie->getName()];
+			if ($clientHasCookie) {
+				// If we get this far we know the client has our cookie(s)
+				$clientHasCookies = TRUE;
 			}
 		}
 
-		$this->view->assign('cookie', $cookie);
+		$this->view->assign('cookie', $clientHasCookies);
 	}
 
 	/**
@@ -252,20 +224,15 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 * @return void
 	 */
 	public function editCookieAction() {
-		$cookie = $this->cookieRepository->findAll()->getFirst();
-		$cookies = array();
-		$cookies['mainCookie'] = array(
-			'cookie' => $cookie,
-			'value' => unserialize($_COOKIE[$cookie->getName()])
-		);
-		foreach ($cookie->getGroupCookies() as $groupCookie) {
-			$groupCookieIdentifier = $cookie->getName() . '_' . $groupCookie->getName();
-			$cookies['groupCookies'][] = array(
-				'cookie' => $groupCookie,
-				'value' => unserialize($_COOKIE[$groupCookieIdentifier])
+		$cookies = $this->cookieRepository->findAll();
+		$cookiesArray = array();
+		foreach ($cookies as $cookie) {
+			$cookiesArray[] = array(
+				'cookie' => $cookie,
+				'value' => unserialize($_COOKIE[$cookie->getName()])
 			);
 		}
-		$this->view->assign('cookies', $cookies);
+		$this->view->assign('cookies', $cookiesArray);
 	}
 
 	/**
@@ -273,7 +240,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 */
 	public function logIPAddress() {
 		if ($this->settings['logIpAddresses']) {
-			$IPAddress = $this->objectManager->create(Tx_CookieManager_Domain_Model_IPAddress);
+			$IPAddress = $this->objectManager->create('Tx_CookieManager_Domain_Model_IPAddress');
 			$IPAddress->setIp(Tx_CookieManager_Utility_IPUtility::getIPAddress());
 			$this->IPAddressRepository->add($IPAddress);
 		}

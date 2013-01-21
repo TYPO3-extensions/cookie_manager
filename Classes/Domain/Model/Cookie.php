@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Henjo Hoeksma <hphoeksma@stylence.nl>, Stylence
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -71,36 +71,6 @@ class Tx_CookieManager_Domain_Model_Cookie extends Tx_Extbase_DomainObject_Abstr
 	 * @var boolean
 	 */
 	protected $secure = FALSE;
-
-	/**
-	 * GroupCookies
-	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie>
-	 * @lazy
-	 */
-	protected $groupCookies;
-
-	/**
-	 *
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
-
-	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the extension builder
-		 * You may modify the constructor of this class instead
-		 */
-		$this->groupCookies = new Tx_Extbase_Persistence_ObjectStorage();
-	}
 
 	/**
 	 * Returns the name
@@ -204,45 +174,6 @@ class Tx_CookieManager_Domain_Model_Cookie extends Tx_Extbase_DomainObject_Abstr
 	 */
 	public function isSecure() {
 		return $this->getSecure();
-	}
-
-	/**
-	 * Adds a GroupCookie
-	 *
-	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCookie
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
-	 */
-	public function addGroupCookie(Tx_CookieManager_Domain_Model_GroupCookie $groupCookie) {
-		$this->groupCookies->attach($groupCookie);
-	}
-
-	/**
-	 * Removes a GroupCookie
-	 *
-	 * @param Tx_CookieManager_Domain_Model_GroupCookie $groupCookieToRemove The GroupCookie to be removed
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
-	 */
-	public function removeGroupCookie(Tx_CookieManager_Domain_Model_GroupCookie $groupCookieToRemove) {
-		$this->groupCookies->detach($groupCookieToRemove);
-	}
-
-	/**
-	 * Returns the groupCookies
-	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
-	 */
-	public function getGroupCookies() {
-		return $this->groupCookies;
-	}
-
-	/**
-	 * Sets the groupCookies
-	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> $groupCookies
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_CookieManager_Domain_Model_GroupCookie> groupCookies
-	 */
-	public function setGroupCookies(Tx_Extbase_Persistence_ObjectStorage $groupCookies) {
-		$this->groupCookies = $groupCookies;
 	}
 
 }

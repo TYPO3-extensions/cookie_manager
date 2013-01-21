@@ -1,15 +1,24 @@
-<div class="cookiemanager container">
-	<div class="row">
-		<f:if condition="{cookie}">
-			<f:else>
-				<div class="span8">
-					<f:link.action action="editCookie"><i class="icon icon-info-sign"></i> {f:translate(key:'fe.link.cookiepolicy')}</f:link.action>
-				</div>
-				<div class="pull-right createCookieAction">
-					<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="1354824258">{f:translate(key:'fe.link.disallow')}</f:link.action>
-					<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'true'}" pageType="1354824258">{f:translate(key:'fe.link.allow')}</f:link.action>
-				</div>
-			</f:else>
-		</f:if>
+<f:layout name="Default"/>
+<f:section name="main">
+	<div class="cookiemanager container">
+		<div class="row">
+			<f:if condition="{cookie}">
+				<f:else>
+					<div class="span8">
+						<f:link.action action="editCookie"><i class="icon icon-info-sign"></i>
+							{f:translate(key:'fe.link.cookiepolicy')}
+						</f:link.action>
+					</div>
+					<div class="pull-right createCookieAction">
+						<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="1354824258">
+							{f:translate(key:'fe.link.disallow')}
+						</f:link.action>
+						<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'1'}"
+									   pageType="1354824258">{f:translate(key:'fe.link.allow')}
+						</f:link.action>
+					</div>
+				</f:else>
+			</f:if>
+		</div>
 	</div>
-</div>
+</f:section>

@@ -39,23 +39,4 @@
 			{cookie.secure}
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_cookiemanager_domain_model_cookie.group_cookies" />
-		</td>
-		<td>
-			<f:if condition="{cookie.groupCookies}">
-				<f:then>
-					<ul>
-						<f:for each="{cookie.groupCookies}" as="groupCookie">
-						<li>{groupCookie.name}</li>
-						</f:for>
-					</ul>
-				</f:then>
-				<f:else>
-					<p>No group cookies defined yet.</p>
-				</f:else>
-			</f:if>
-		</td>
-	</tr>
 </table>

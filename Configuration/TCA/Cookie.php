@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_cookiemanager_domain_model_cookie'] = array(
 	'ctrl' => $TCA['tx_cookiemanager_domain_model_cookie']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, expire, path, domain, secure, group_cookies',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, expire, path, domain, secure',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'name, expire, path, domain, secure, group_cookies,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access, sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, starttime, endtime'),
+		'1' => array('showitem' => 'name, expire, path, domain, secure,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access, sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -135,23 +135,6 @@ $TCA['tx_cookiemanager_domain_model_cookie'] = array(
 			'config' => array(
 				'type' => 'check',
 				'default' => 0
-			),
-		),
-		'group_cookies' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:cookie_manager/Resources/Private/Language/locallang_db.xml:tx_cookiemanager_domain_model_cookie.group_cookies',
-			'config' => array(
-				'type' => 'inline',
-				'foreign_table' => 'tx_cookiemanager_domain_model_groupcookie',
-				'foreign_field' => 'cookie',
-				'maxitems'      => 9999,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
 	),

@@ -8,12 +8,10 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	'Cookie',
 	array(
 		'Cookie' => 'editCookie, acceptCookie, createCookie, updateCookie',
-		
 	),
 	// non-cacheable actions
 	array(
 		'Cookie' => 'acceptCookie, editCookie, createCookie, updateCookie',
-		
 	)
 );
 
@@ -22,12 +20,10 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	'CookieAccept',
 	array(
 		'Cookie' => 'acceptCookie, createCookie',
-
 	),
 	// non-cacheable actions
 	array(
-		'Cookie' => 'acceptCookie, editCookie',
-
+		'Cookie' => 'acceptCookie, createCookie',
 	)
 );
 ?>

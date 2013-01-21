@@ -1,17 +1,48 @@
 <?php
+/***************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2012 Henjo Hoeksma <hphoeksma@stylence.nl>, Stylence
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
 
+/**
+ *
+ *
+ * @package cookie_manager
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ *
+ */
 class Tx_CookieManager_Service_CookieService implements t3lib_Singleton {
 
 	/**
 	 * Set main and groupcookies in one call
 	 *
-	 * @param Tx_CookieManager_Domain_Model_Cookie $cookie
+	 * @param Tx_Extbase_Persistence_QueryResult|array $cookies
 	 * @param boolean $value
 	 * @return boolean
 	 */
-	public function setAllCookies(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
-		self::setMainCookie($cookie, $value);
-		self::setAllGroupCookies($cookie, $value);
+	static public function  setAllCookies($cookies, $value = FALSE) {
+		foreach ($cookies as $cookie) {
+			self::setCookie($cookie, $value);
+		}
 		return TRUE;
 	}
 
@@ -22,7 +53,7 @@ class Tx_CookieManager_Service_CookieService implements t3lib_Singleton {
 	 * @param boolean $value
 	 * @return boolean
 	 */
-	public function setMainCookie(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
+	static public function setCookie(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
 		$expire = strtotime($cookie->getExpire());
 		if ($expire) {
 			return setcookie(
@@ -32,69 +63,10 @@ class Tx_CookieManager_Service_CookieService implements t3lib_Singleton {
 				$cookie->getPath(),
 				$cookie->getDomain(),
 				$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-				$httponly = false
+				$httponly = FALSE
 			);
 		}
 		return FALSE;
-	}
-
-	/**
-	 * This method sets all group cookies with one call.
-	 * Used in the initial phase.
-	 *
-	 * @param Tx_CookieManager_Domain_Model_Cookie $cookie
-	 * @param boolean $value
-	 * @return boolean
-	 */
-	public function setAllGroupCookies(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE) {
-		$expire = strtotime($cookie->getExpire());
-		if ($expire) {
-			foreach ($cookie->getGroupCookies() as $groupCookie) {
-				setcookie(
-					$cookie->getName() . '_' . $groupCookie->getName(),
-					serialize($value),
-					$expire,
-					$cookie->getPath(),
-					$cookie->getDomain(),
-					$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-					$httponly = false
-				);
-			}
-
-			// If a groupCookie is set, we need the main cookie as well
-			self::setMainCookie($cookie, $value);
-
-			return TRUE;
-		}
-	}
-
-	/**
-	 * This method sets a group cookie based on a given name.
-	 * These names must match exactly.
-	 *
-	 * @param Tx_CookieManager_Domain_Model_Cookie $cookie
-	 * @param bool $value
-	 * @param string $name
-	 * @return boolean
-	 */
-	public function setGroupCookieByName(Tx_CookieManager_Domain_Model_Cookie $cookie, $value = FALSE, $name = '') {
-		$expire = strtotime($cookie->getExpire());
-		if ($expire) {
-			foreach ($cookie->getGroupCookies() as $groupCookie) {
-				if ($groupCookie->getName() === $name) {
-					setcookie(
-						$cookie->getName() . '_' . $groupCookie->getName(),
-						serialize($value),
-						$expire,
-						$cookie->getPath(),
-						$cookie->getDomain(),
-						$cookie->getSecure() ? $cookie->getSecure() : FALSE,
-						$httponly = false
-					);
-				}
-			}
-			return TRUE;
-		}
 	}
 
 }

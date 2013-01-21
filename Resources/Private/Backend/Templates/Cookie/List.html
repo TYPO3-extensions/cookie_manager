@@ -1,0 +1,7 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+	<f:for each="{cookies}" as="cookie">
+		<f:render partial="Cookie/Properties" arguments="{cookie:cookie}" />
+	</f:for>
+</f:section>

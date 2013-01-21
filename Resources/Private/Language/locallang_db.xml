@@ -6,7 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-            
+
 			<label index="tx_cookiemanager_domain_model_cookie">Cookie</label>
 			<label index="tx_cookiemanager_domain_model_cookie.name">Name</label>
 			<label index="tx_cookiemanager_domain_model_cookie.expire">Expire</label>
@@ -14,10 +14,6 @@
 			<label index="tx_cookiemanager_domain_model_cookie.domain">Domain</label>
 			<label index="tx_cookiemanager_domain_model_cookie.secure">Secure</label>
 			<label index="tx_cookiemanager_domain_model_cookie.group_cookies">Group Cookies</label>
-
-			<label index="tx_cookiemanager_domain_model_groupcookie">Group Cookie</label>
-			<label index="tx_cookiemanager_domain_model_groupcookie.name">Name</label>
-			<label index="tx_cookiemanager_domain_model_groupcookie.description">GroupCookie Description</label>
 
 			<label index="tx_cookiemanager_domain_model_ipaddress">IP Address</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP</label>

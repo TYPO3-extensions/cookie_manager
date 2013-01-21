@@ -7,13 +7,12 @@
 	</meta>
 	<data type="array">
 	<languageKey index="default" type="array">
-	   
+
 			<label index="name.description">Cookie name</label>
 			<label index="expire.description">Cookie lifetime</label>
 			<label index="path.description">Cookie path</label>
 			<label index="domain.description">Cookie domain</label>
 			<label index="secure.description">Secured Connection Only Cookie</label>
-			<label index="group_cookies.description">GroupCookies</label>
 		</languageKey>
 	</data>
 </T3locallang>

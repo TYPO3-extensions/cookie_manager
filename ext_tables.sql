@@ -11,7 +11,6 @@ CREATE TABLE tx_cookiemanager_domain_model_cookie (
 	path varchar(255) DEFAULT '' NOT NULL,
 	domain varchar(255) DEFAULT '' NOT NULL,
 	secure tinyint(1) unsigned DEFAULT '0' NOT NULL,
-	group_cookies int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -123,14 +122,5 @@ CREATE TABLE tx_cookiemanager_domain_model_ipaddress (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
-
-);
-
-#
-# Table structure for table 'tx_cookiemanager_domain_model_groupcookie'
-#
-CREATE TABLE tx_cookiemanager_domain_model_groupcookie (
-
-	cookie  int(11) unsigned DEFAULT '0' NOT NULL,
 
 );

@@ -8,6 +8,7 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'Cookie',
 	'Cookie Control'
 );
+
 Tx_Extbase_Utility_Extension::registerPlugin(
 	$_EXTKEY,
 	'CookieAccept',
@@ -30,9 +31,8 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 //		'manager',	// Submodule key
 //		'',						// Position
 //		array(
-//			'Cookie' => 'dispatch, new, create, show, edit, update, delete',
+//			'Cookie' => 'list, new, create, show, edit, update, delete',
 //			'IPAddress' => 'list, show, new, create, delete',
-//
 //		),
 //		array(
 //			'access' => 'user,group',
@@ -71,36 +71,6 @@ $TCA['tx_cookiemanager_domain_model_cookie'] = array(
 		'searchFields' => 'name,expire,path,domain,secure,group_cookies,',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Cookie.php',
 		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_cookiemanager_domain_model_cookie.gif'
-	),
-);
-
-t3lib_extMgm::addLLrefForTCAdescr('tx_cookiemanager_domain_model_groupcookie', 'EXT:cookie_manager/Resources/Private/Language/locallang_csh_tx_cookiemanager_domain_model_groupcookie.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_cookiemanager_domain_model_groupcookie');
-$TCA['tx_cookiemanager_domain_model_groupcookie'] = array(
-	'ctrl' => array(
-		'title'	=> 'LLL:EXT:cookie_manager/Resources/Private/Language/locallang_db.xml:tx_cookiemanager_domain_model_groupcookie',
-		'label' => 'name',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'dividers2tabs' => TRUE,
-
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
-		'origUid' => 't3_origuid',
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-		),
-		'searchFields' => 'name,',
-		'hideTable' => TRUE,
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/GroupCookie.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_cookiemanager_domain_model_groupcookie.gif'
 	),
 );
 
