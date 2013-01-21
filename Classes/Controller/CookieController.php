@@ -165,7 +165,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 			$msg = 'fe.allowed.0';
 		}
 
-		if ($cookies->count() > 0) {
+		if ($cookies->count()) {
 			Tx_CookieManager_Service_CookieService::setAllCookies($cookies, $allow);
 			// Log the IP address
 			$this->logIPAddress();
@@ -176,7 +176,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 			);
 			return json_encode($result);
 		} else {
-			$this->flashMessageContainer->add('No cookie configuration found!', 'Configuration Error', t3lib_FlashMessage::ERROR);
+			$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('fe.error.noCookies', $this->extensionName), '', t3lib_FlashMessage::ERROR);
 		}
 	}
 
@@ -207,15 +207,18 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 */
 	public function acceptCookieAction($clientHasCookies = FALSE) {
 		$cookies = $this->cookieRepository->findAll();
-		foreach ($cookies as $cookie) {
-			$clientHasCookie = $_COOKIE[$cookie->getName()];
-			if ($clientHasCookie) {
-				// If we get this far we know the client has our cookie(s)
-				$clientHasCookies = TRUE;
+		if ($cookies->count()) {
+			foreach ($cookies as $cookie) {
+				$clientHasCookie = $_COOKIE[$cookie->getName()];
+				if ($clientHasCookie) {
+					// If we get this far we know the client has our cookie(s)
+					$clientHasCookies = TRUE;
+				}
 			}
+			$this->view->assign('cookie', $clientHasCookies);
+		} else {
+			$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('fe.error.noCookies', $this->extensionName), '', t3lib_FlashMessage::ERROR);
 		}
-
-		$this->view->assign('cookie', $clientHasCookies);
 	}
 
 	/**
@@ -225,6 +228,7 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 	 */
 	public function editCookieAction() {
 		$cookies = $this->cookieRepository->findAll();
+
 		$cookiesArray = array();
 		foreach ($cookies as $cookie) {
 			$cookiesArray[] = array(

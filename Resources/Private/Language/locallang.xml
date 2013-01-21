@@ -24,6 +24,7 @@
 			<label index="fe.link.allow">Yes, I accept cookies</label>
 			<label index="fe.link.disallow">I don't want cookies</label>
 			<label index="fe.form.save">Save</label>
+			<label index="fe.error.noCookies">No cookies could be found. Please make sure you have set the storage pid and added one or more cookies.</label>
 		</languageKey>
 		<languageKey index="nl" type="array">
 			<label index="tx_cookiemanager_domain_model_cookie">Cookie</label>
@@ -44,6 +45,7 @@
 			<label index="fe.link.allow">Ja, ik accepteer cookies</label>
 			<label index="fe.link.disallow">Ik wil geen cookies</label>
 			<label index="fe.form.save">Opslaan</label>
+			<label index="fe.error.noCookies">Er zijn geen cookies gevonden. Check of u de storage pid heeft ingesteld en maak een of meer cookies aan.</label>
 		</languageKey>
 	</data>
 </T3locallang>

@@ -1,11 +1,18 @@
 <f:layout name="Default"/>
 <f:section name="main">
 	<f:flashMessages renderMode="div"/>
-	<f:render partial="FormErrors"/>
-	<f:form action="updateCookie" name="cookies" object="{cookies}">
-		<f:for each="{cookies}" as="cookie">
-			<f:render partial="Cookie/FormFields" arguments="{cookie:cookie.cookie, value:cookie.value}"/>
-		</f:for>
-		<f:form.submit class="btn btn-primary" value="{f:translate(key:'fe.form.save')}"/>
-	</f:form>
+	<f:if condition="{cookies}">
+		<f:then>
+			<f:render partial="FormErrors"/>
+			<f:form action="updateCookie" name="cookies" object="{cookies}">
+				<f:for each="{cookies}" as="cookie">
+					<f:render partial="Cookie/FormFields" arguments="{cookie:cookie.cookie, value:cookie.value}"/>
+				</f:for>
+				<f:form.submit class="btn btn-primary" value="{f:translate(key:'fe.form.save')}"/>
+			</f:form>
+		</f:then>
+		<f:else>
+			{f:translate(key:'fe.error.noCookies') -> f:format.html()}
+		</f:else>
+	</f:if>
 </f:section>
