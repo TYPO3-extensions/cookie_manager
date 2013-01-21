@@ -25,5 +25,25 @@
 			<label index="fe.link.disallow">I don't want cookies</label>
 			<label index="fe.form.save">Save</label>
 		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="tx_cookiemanager_domain_model_cookie">Cookie</label>
+			<label index="tx_cookiemanager_domain_model_cookie.name">Cookie naam</label>
+			<label index="tx_cookiemanager_domain_model_cookie.expire">Cookie levensduur</label>
+			<label index="tx_cookiemanager_domain_model_cookie.path">Cookie pad</label>
+			<label index="tx_cookiemanager_domain_model_cookie.domain">Cookie domein</label>
+			<label index="tx_cookiemanager_domain_model_cookie.secure">Alleen voor beveilige connecties</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress">IP Adres</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP Adres</label>
+			<label index="bemod.created">Uw cookie instellingen zijn aangemaakt</label>
+			<label index="bemod.updated">Uw cookie instellingen zijn aangepast</label>
+			<label index="bemod.deleted">Uw cookie instellingen zijn verwijderd</label>
+			<label index="fe.allowed.1">Dank u. Uw voorkeuren zijn opgeslagen.</label>
+			<label index="fe.allowed.0">Dank u. Uw voorkeuren zijn opgeslagen. Wij respecteren uw keuze.</label>
+			<label index="fe.updated">Uw cookie instellingen zijn aangepast</label>
+			<label index="fe.link.cookiepolicy">Meer over ons Cookie beleid</label>
+			<label index="fe.link.allow">Ja, ik accepteer cookies</label>
+			<label index="fe.link.disallow">Ik wil geen cookies</label>
+			<label index="fe.form.save">Opslaan</label>
+		</languageKey>
 	</data>
 </T3locallang>

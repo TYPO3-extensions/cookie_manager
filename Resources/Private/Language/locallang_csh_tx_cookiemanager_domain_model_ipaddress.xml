@@ -6,9 +6,11 @@
 		<csh_table>tx_cookiemanager_domain_model_ipaddress</csh_table>
 	</meta>
 	<data type="array">
-	<languageKey index="default" type="array">
-	   
+		<languageKey index="default" type="array">
 			<label index="ip.description">IP Address</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="ip.description">IP Adres</label>
 		</languageKey>
 	</data>
 </T3locallang>

@@ -6,8 +6,13 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		<label index="mlang_tabs_tab">Cookie Manager</label>
-			<label index="mlang_labels_tabdescr">Cookie Manager tool</label>
+			<label index="mlang_tabs_tab">Cookie Manager</label>
+			<label index="mlang_labels_tabdescr">Cookie Manager</label>
+			<label index="mlang_labels_tablabel">Cookie Manager</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="mlang_tabs_tab">Cookie Manager</label>
+			<label index="mlang_labels_tabdescr">Cookie Manager</label>
 			<label index="mlang_labels_tablabel">Cookie Manager</label>
 		</languageKey>
 	</data>

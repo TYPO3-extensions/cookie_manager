@@ -13,9 +13,21 @@
 			<label index="tx_cookiemanager_domain_model_cookie.path">Path</label>
 			<label index="tx_cookiemanager_domain_model_cookie.domain">Domain</label>
 			<label index="tx_cookiemanager_domain_model_cookie.secure">Secure</label>
-			<label index="tx_cookiemanager_domain_model_cookie.group_cookies">Group Cookies</label>
 
 			<label index="tx_cookiemanager_domain_model_ipaddress">IP Address</label>
+			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP</label>
+
+		</languageKey>
+		<languageKey index="nl" type="array">
+
+			<label index="tx_cookiemanager_domain_model_cookie">Cookie</label>
+			<label index="tx_cookiemanager_domain_model_cookie.name">Naam</label>
+			<label index="tx_cookiemanager_domain_model_cookie.expire">Levensduur</label>
+			<label index="tx_cookiemanager_domain_model_cookie.path">Pad</label>
+			<label index="tx_cookiemanager_domain_model_cookie.domain">Domein</label>
+			<label index="tx_cookiemanager_domain_model_cookie.secure">Alleen voor beveiligde connecties</label>
+
+			<label index="tx_cookiemanager_domain_model_ipaddress">IP Adres</label>
 			<label index="tx_cookiemanager_domain_model_ipaddress.ip">IP</label>
 
 		</languageKey>
