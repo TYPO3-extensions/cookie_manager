@@ -167,8 +167,10 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 
 		if ($cookies->count()) {
 			Tx_CookieManager_Service_CookieService::setAllCookies($cookies, $allow);
-			// Log the IP address
-			$this->logIPAddress();
+			// Log the IP address if applicable
+			if ($allow) {
+				$this->logIPAddress();
+			}
 			// Set result message
 			$result = array(
 				'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
