@@ -14,6 +14,8 @@ plugin.tx_cookiemanager {
 	settings {
 		# cat=plugin.tx_cookiemanager//a; type=boolean; Label=Enable IP logging:If true IP's are logged from users who accept cookies.
 		logIpAddresses = 0
+		# cat=plugin.tx_cookiemanager//b; type=boolean; Label=Enable the use of Javascript:If false Javascript will not be used nor included.
+		enableJavascript = 1
 	}
 }
 

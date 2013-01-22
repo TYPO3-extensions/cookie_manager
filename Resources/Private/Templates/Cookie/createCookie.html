@@ -1,0 +1,12 @@
+<f:layout name="Default"/>
+<f:section name="main">
+	<div class="cookiemanager container">
+		<div class="row">
+			<div class="span6 offset3 align-center">
+				<f:if condition="{message}">
+					{message -> f:format.html()}
+				</f:if>
+			</div>
+		</div>
+	</div>
+</f:section>

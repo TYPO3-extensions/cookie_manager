@@ -14,6 +14,7 @@ plugin.tx_cookiemanager {
 	}
 	settings {
 		logIpAddresses = {$plugin.tx_cookiemanager.settings.logIpAddresses}
+		enableJavascript = {$plugin.tx_cookiemanager.settings.enableJavascript}
 	}
 }
 
@@ -29,6 +30,8 @@ module.tx_cookiemanager {
 	}
 }
 
+# Only if Javascript is not disabled
+[globalString = LIT:1 = {$plugin.tx_cookiemanager.settings.enableJavascript}]
 cookie = PAGE
 cookie {
 	typeNum = 1354824258
@@ -38,9 +41,9 @@ cookie {
 		pluginName = CookieAccept
 		extensionName = CookieManager
 		switchableControllerActions {
-		    Cookie {
+			Cookie {
 				1 = createCookie
-		    }
+			}
 		}
 		settings =< plugin.tx_cookiemanager.settings
 		persistence =< plugin.tx_cookiemanager.persistence
@@ -56,3 +59,4 @@ cookie {
 }
 
 page.includeJSFooterlibs.cookie = EXT:cookie_manager/Resources/Public/Javascripts/createcookie.js
+[global]

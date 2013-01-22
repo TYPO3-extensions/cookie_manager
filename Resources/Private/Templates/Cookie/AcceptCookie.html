@@ -11,11 +11,11 @@
 						</f:link.action>
 					</div>
 					<div class="pull-right createCookieAction">
-						<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="1354824258">
+						<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
 							{f:translate(key:'fe.link.disallow')}
 						</f:link.action>
-						<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'1'}"
-									   pageType="1354824258">{f:translate(key:'fe.link.allow')}
+						<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'1'}" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
+						{f:translate(key:'fe.link.allow')}
 						</f:link.action>
 					</div>
 				</f:else>

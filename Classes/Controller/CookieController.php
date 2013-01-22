@@ -176,7 +176,11 @@ class Tx_CookieManager_Controller_CookieController extends Tx_Extbase_MVC_Contro
 				'ip' => Tx_CookieManager_Utility_IPUtility::getIPAddress(),
 				'msg' => Tx_Extbase_Utility_Localization::translate($msg, $this->extensionName)
 			);
-			return json_encode($result);
+			if ($this->settings['enableJavascript']) {
+				return json_encode($result);
+			} else {
+				$this->view->assign('message', $result['msg']);
+			}
 		} else {
 			$this->flashMessageContainer->add(Tx_Extbase_Utility_Localization::translate('fe.error.noCookies', $this->extensionName), '', t3lib_FlashMessage::ERROR);
 		}
