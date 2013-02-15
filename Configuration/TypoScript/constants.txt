@@ -16,6 +16,8 @@ plugin.tx_cookiemanager {
 		logIpAddresses = 0
 		# cat=plugin.tx_cookiemanager//b; type=boolean; Label=Enable the use of Javascript:If false Javascript will not be used nor included.
 		enableJavascript = 1
+		# cat=plugin.tx_cookiemanager//c; type=int+; Label=Page ID to edit cookie settings:And to show the cookie policy.
+		editPid =
 	}
 }
 

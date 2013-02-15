@@ -5,11 +5,13 @@
 			<f:flashMessages renderMode="div" />
 			<f:if condition="{cookie}">
 				<f:else>
-					<div class="span8">
-						<f:link.action action="editCookie"><i class="icon icon-info-sign"></i>
-							{f:translate(key:'fe.link.cookiepolicy')}
-						</f:link.action>
-					</div>
+					<f:if condition="{settings.editPid}">
+						<div class="span8">
+							<f:link.page pageUid="{settings.editPid}"><i class="icon icon-info-sign"></i>
+								{f:translate(key:'fe.link.cookiepolicy')}
+							</f:link.page>
+						</div>
+					</f:if>
 					<div class="pull-right createCookieAction">
 						<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
 							{f:translate(key:'fe.link.disallow')}
