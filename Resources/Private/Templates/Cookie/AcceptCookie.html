@@ -4,6 +4,9 @@
 	<f:if condition="{cookie}">
 		<f:else>
 			<div class="cookiemanager">
+				<div class="explanation">
+					{f:translate(key:'fe.explanation')}
+				</div>
 				<f:if condition="{settings.editPid}">
 					<div class="policy">
 						<f:link.page pageUid="{settings.editPid}"><i class="icon icon-info-sign"></i>

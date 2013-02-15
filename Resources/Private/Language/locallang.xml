@@ -20,6 +20,7 @@
 			<label index="fe.allowed.1">Thank you for allowing cookies! You are experiencing our website in full glory!</label>
 			<label index="fe.allowed.0">Thank you, we will respect your choice!</label>
 			<label index="fe.updated">Your cookie settings have been updated</label>
+			<label index="fe.explanation">This website is using cookies</label>
 			<label index="fe.link.cookiepolicy">Read more about our Cookie Policy</label>
 			<label index="fe.link.allow">Yes, I accept cookies</label>
 			<label index="fe.link.disallow">I don't want cookies</label>
@@ -41,6 +42,7 @@
 			<label index="fe.allowed.1">Dank u. Uw voorkeuren zijn opgeslagen.</label>
 			<label index="fe.allowed.0">Dank u. Uw voorkeuren zijn opgeslagen. Wij respecteren uw keuze.</label>
 			<label index="fe.updated">Uw cookie instellingen zijn aangepast</label>
+			<label index="fe.explanation">Deze website maakt gebruik van cookies</label>
 			<label index="fe.link.cookiepolicy">Meer over ons Cookie beleid</label>
 			<label index="fe.link.allow">Ja, ik accepteer cookies</label>
 			<label index="fe.link.disallow">Ik wil geen cookies</label>
