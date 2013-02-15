@@ -1,8 +1,8 @@
 $('document').ready(function() {
-	$('.createCookieAction a').on('click', function(e) {
+	$('.cookiemanager .buttons a').on('click', function(e) {
 		e.preventDefault();
 		$.getJSON($(this).attr('href'), function(data) {
-			$('.createCookieAction').html(data.msg);
+			$('.cookiemanager .buttons').html(data.msg);
 		});
 	});
 });

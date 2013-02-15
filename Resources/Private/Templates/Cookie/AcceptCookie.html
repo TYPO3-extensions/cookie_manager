@@ -1,27 +1,25 @@
 <f:layout name="Default"/>
 <f:section name="main">
-	<div class="cookiemanager container">
-		<div class="row">
-			<f:flashMessages renderMode="div" />
-			<f:if condition="{cookie}">
-				<f:else>
-					<f:if condition="{settings.editPid}">
-						<div class="span8">
-							<f:link.page pageUid="{settings.editPid}"><i class="icon icon-info-sign"></i>
-								{f:translate(key:'fe.link.cookiepolicy')}
-							</f:link.page>
-						</div>
-					</f:if>
-					<div class="pull-right createCookieAction">
-						<f:link.action action="createCookie" class="btn btn-small btn-warning" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
-							{f:translate(key:'fe.link.disallow')}
-						</f:link.action>
-						<f:link.action action="createCookie" class="btn btn-small btn-success" arguments="{allow:'1'}" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
-						{f:translate(key:'fe.link.allow')}
-						</f:link.action>
+	<f:flashMessages renderMode="div" />
+	<f:if condition="{cookie}">
+		<f:else>
+			<div class="cookiemanager">
+				<f:if condition="{settings.editPid}">
+					<div class="policy">
+						<f:link.page pageUid="{settings.editPid}"><i class="icon icon-info-sign"></i>
+							{f:translate(key:'fe.link.cookiepolicy')}
+						</f:link.page>
 					</div>
-				</f:else>
-			</f:if>
-		</div>
-	</div>
+				</f:if>
+				<div class="buttons">
+					<f:link.action action="createCookie" class="disallow" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
+						{f:translate(key:'fe.link.disallow')}
+					</f:link.action>
+					<f:link.action action="createCookie" class="allow" arguments="{allow:'1'}" pageType="{f:if(condition:'{settings.enableJavascript}', then:'1354824258')}">
+						{f:translate(key:'fe.link.allow')}
+					</f:link.action>
+				</div>
+			</div>
+		</f:else>
+	</f:if>
 </f:section>
